@@ -100,12 +100,16 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_SuspendTick();
+
   mutex_init(&m);
+
   task_init();
   task_create("test0", task_test0, NULL, 1);
   task_create("test1", task_test1, NULL, 2);
   task_create("test2", task_test2, NULL, 3);
+
   HAL_ResumeTick();
+
   task_os_start();
   /* USER CODE END 2 */
 
